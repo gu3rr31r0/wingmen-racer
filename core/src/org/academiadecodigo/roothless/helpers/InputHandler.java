@@ -1,6 +1,8 @@
 package org.academiadecodigo.roothless.helpers;
 
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
+import org.academiadecodigo.roothless.gameobjects.Player;
 import org.academiadecodigo.roothless.gameworld.GameWorld;
 
 /**
@@ -9,18 +11,38 @@ import org.academiadecodigo.roothless.gameworld.GameWorld;
 public class InputHandler implements InputProcessor {
 
 
-    public InputHandler(GameWorld gameWorld) {
+    private Player player;
 
+    public InputHandler(GameWorld gameWorld) {
+        player = gameWorld.getPlayer();
     }
 
     @Override
     public boolean keyDown(int keycode) {
-        return false;
+
+        switch (keycode) {
+            case Input.Keys.LEFT:
+                player.setLeftMove(true);
+                break;
+            case Input.Keys.RIGHT:
+                player.setRightMove(true);
+                break;
+        }
+        return true;
     }
 
     @Override
     public boolean keyUp(int keycode) {
-        return false;
+
+        switch (keycode) {
+            case Input.Keys.LEFT:
+                player.setLeftMove(false);
+                break;
+            case Input.Keys.RIGHT:
+                player.setRightMove(false);
+                break;
+        }
+        return true;
     }
 
     @Override

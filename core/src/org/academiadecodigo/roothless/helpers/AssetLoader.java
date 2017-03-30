@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.g3d.ModelInstance;
 import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute;
 import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
 import org.academiadecodigo.roothless.gameobjects.Floor;
+import org.academiadecodigo.roothless.gameobjects.Player;
 
 /**
  * Created by codecadet on 30/03/17.
@@ -17,6 +18,7 @@ import org.academiadecodigo.roothless.gameobjects.Floor;
 public class AssetLoader {
 
     public static Texture backGround;
+
 
     public static void load() {
 
