@@ -32,7 +32,7 @@ public class AssetLoader {
 
         backGround = new Texture(Gdx.files.internal("data/backGround.jpg"));
 
-        Model mFloor2 = modelBuilder.createBox(7,1,7,
+        Model floor2 = modelBuilder.createBox(7,1,7,
                 new Material(ColorAttribute.createDiffuse(Color.YELLOW)),
                 VertexAttributes.Usage.Position | VertexAttributes.Usage.Normal);
 
