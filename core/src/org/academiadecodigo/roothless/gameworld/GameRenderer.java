@@ -22,7 +22,7 @@ public class GameRenderer {
     private Environment environment;
     // private CameraInputController camController;
     private ModelBatch modelBatch;
-    private ModelInstance floor1, floor2, floor3, floor4;
+    private ModelInstance floor1, floor2, floor3, floor4, floor5, floor6, floor7;
     private Texture back;
     private SpriteBatch batcher;
 
@@ -67,11 +67,17 @@ public class GameRenderer {
         modelBatch.render(floor2, environment);
         modelBatch.render(floor3, environment);
         modelBatch.render(floor4, environment);
+        modelBatch.render(floor5, environment);
+        modelBatch.render(floor6, environment);
+        modelBatch.render(floor7, environment);
 
         floor1.transform.translate(0,0, 1*Gdx.graphics.getDeltaTime());
         floor2.transform.translate(0,0, 1*Gdx.graphics.getDeltaTime());
         floor3.transform.translate(0,0, 1*Gdx.graphics.getDeltaTime());
         floor4.transform.translate(0,0,1*Gdx.graphics.getDeltaTime());
+        floor5.transform.translate(0,0, 1*Gdx.graphics.getDeltaTime());
+        floor6.transform.translate(0,0, 1*Gdx.graphics.getDeltaTime());
+        floor7.transform.translate(0,0,1*Gdx.graphics.getDeltaTime());
 
         modelBatch.end();
 
@@ -80,13 +86,22 @@ public class GameRenderer {
     }
 
     public void initAssets() {
-
-        floor1 = AssetLoader.floor1Instance;
-        floor2 = AssetLoader.floor2Instance;
-        floor3 = AssetLoader.floor3Instance;
-        floor4 = AssetLoader.floor4Instance;
+        floor1 = gameWorld.getScroll().getFloor1().getModelInstance();
+        floor2 = gameWorld.getScroll().getFloor2().getModelInstance();
+        floor3 = gameWorld.getScroll().getFloor3().getModelInstance();
+        floor4 = gameWorld.getScroll().getFloor4().getModelInstance();
+        floor5 = gameWorld.getScroll().getFloor5().getModelInstance();
+        floor6 = gameWorld.getScroll().getFloor6().getModelInstance();
+        floor7 = gameWorld.getScroll().getFloor7().getModelInstance();
         back = AssetLoader.backGround;
 
+        floor1.transform.translate(0,0,0);
+        floor2.transform.translate(0,0,-7);
+        floor3.transform.translate(0,0,-14);
+        floor4.transform.translate(0,0,-21);
+        floor5.transform.translate(0,0,-28);
+        floor6.transform.translate(0,0,-35);
+        floor7.transform.translate(0,0,-42);
 
 
     }

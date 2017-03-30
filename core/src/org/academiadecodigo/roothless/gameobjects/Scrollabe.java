@@ -23,9 +23,10 @@ public class Scrollabe {
     }
 
     public void update(float delta) {
+
         position.add(velocity.cpy().scl(delta));
 
-        if (position.z + depth < 0) {
+        if (position.z - depth > 0) {
             scrolledDown = true;
         }
 
@@ -35,10 +36,6 @@ public class Scrollabe {
         position.z = newZ;
         scrolledDown = false;
     }
-
-
-
-
 
     public float getPosX() {
         return position.x;
@@ -53,7 +50,7 @@ public class Scrollabe {
     }
 
     public float getTailZ() {
-        return position.z + depth;
+        return getPosZ() - depth;
     }
 
     public void stop() {
