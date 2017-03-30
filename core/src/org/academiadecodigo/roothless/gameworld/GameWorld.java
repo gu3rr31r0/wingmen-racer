@@ -20,6 +20,10 @@ public class GameWorld {
 
     }
 
+    public ScrollHandler getScroll() {
+        return scroll;
+    }
+
     public void update(float delta) {
         scroll.update(delta);
     }
