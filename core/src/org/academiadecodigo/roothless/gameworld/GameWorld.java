@@ -23,4 +23,8 @@ public class GameWorld {
     public void update(float delta) {
         scroll.update(delta);
     }
+
+    public Player getPlayer() {
+        return player;
+    }
 }
