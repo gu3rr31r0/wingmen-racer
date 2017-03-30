@@ -56,14 +56,11 @@ public class ScrollHandler {
         } else if (floor5.isScrolledDown()) {
             floor5.reset(floor4.getTailZ());
 
-        } else if (floor5.isScrolledDown()) {
-            floor5.reset(floor4.getTailZ());
-
-        } else if (floor6.isScrolledDown()) {
+        }  else if (floor6.isScrolledDown()) {
             floor6.reset(floor5.getTailZ());
 
         } else if (floor7.isScrolledDown()) {
-            floor7.reset(floor6.getPosZ());
+            floor7.reset(-42);
         }
 
         floor1.update(delta);
