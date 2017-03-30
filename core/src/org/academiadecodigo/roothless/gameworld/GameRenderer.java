@@ -71,13 +71,15 @@ public class GameRenderer {
         modelBatch.render(floor6, environment);
         modelBatch.render(floor7, environment);
 
-        floor1.transform.translate(0,0, 1*Gdx.graphics.getDeltaTime());
-        floor2.transform.translate(0,0, 1*Gdx.graphics.getDeltaTime());
-        floor3.transform.translate(0,0, 1*Gdx.graphics.getDeltaTime());
-        floor4.transform.translate(0,0,1*Gdx.graphics.getDeltaTime());
-        floor5.transform.translate(0,0, 1*Gdx.graphics.getDeltaTime());
-        floor6.transform.translate(0,0, 1*Gdx.graphics.getDeltaTime());
-        floor7.transform.translate(0,0,1*Gdx.graphics.getDeltaTime());
+        floor1.transform.translate(0,0, 5*Gdx.graphics.getDeltaTime());
+        floor2.transform.translate(0,0, 5*Gdx.graphics.getDeltaTime());
+        floor3.transform.translate(0,0, 5*Gdx.graphics.getDeltaTime());
+        floor4.transform.translate(0,0, 5*Gdx.graphics.getDeltaTime());
+        floor5.transform.translate(0,0, 5*Gdx.graphics.getDeltaTime());
+        floor6.transform.translate(0,0, 5*Gdx.graphics.getDeltaTime());
+        floor7.transform.translate(0,0, 5*Gdx.graphics.getDeltaTime());
+
+        System.out.println(Gdx.graphics.getDeltaTime());
 
         modelBatch.end();
 

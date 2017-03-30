@@ -16,7 +16,7 @@ public class GameWorld {
     public GameWorld(int playerPosZ) {
         this.playerPosZ = playerPosZ;
 
-        scroll = new ScrollHandler(0, this, 1);
+        scroll = new ScrollHandler(0, this, 5);
 
     }
 

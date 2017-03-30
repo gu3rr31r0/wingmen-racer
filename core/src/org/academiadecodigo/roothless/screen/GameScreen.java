@@ -37,9 +37,8 @@ public class GameScreen implements Screen {
 
         runTime += delta;
 
-        gameRenderer.render(runTime);
-
         gameWorld.update(delta);
+        gameRenderer.render(runTime);
 
     }
 
