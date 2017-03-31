@@ -1,6 +1,7 @@
 package org.academiadecodigo.roothless.udpserver;
 
 import com.badlogic.gdx.Input;
+import org.academiadecodigo.roothless.gameworld.GameWorld;
 import org.academiadecodigo.roothless.helpers.InputHandler;
 
 import java.io.IOException;
@@ -11,14 +12,21 @@ import java.net.SocketException;
 /**
  * Created by codecadet on 31/03/17.
  */
-public class UDPServer implements Runnable{
+public class UDPServer implements Runnable {
 
 
-    int port = 8080;
+    int port = 9999;
     private InputHandler inputHandler;
+    DatagramSocket socket = null;
 
     public UDPServer(InputHandler inputHandler) {
         this.inputHandler = inputHandler;
+        try {
+            socket = new DatagramSocket(port);
+            System.out.println(socket.getPort());
+        } catch (SocketException e) {
+            e.printStackTrace();
+        }
     }
 
     public void listen() {
@@ -26,30 +34,26 @@ public class UDPServer implements Runnable{
         byte[] received = new byte[1024];
         String message = null;
 
-        DatagramSocket socket = null;
+
         try {
+            System.out.println("waiting packet");
+            DatagramPacket receivedPacket = new DatagramPacket(received, received.length);
+            socket.receive(receivedPacket);
 
+            message = new String(received);
 
-            socket = new DatagramSocket(port);
-            while (true) {
+            System.out.println(message);
 
-                DatagramPacket receivedPacket = new DatagramPacket(received, received.length);
-               socket.receive(receivedPacket);
+            if (message.equals("left")) {
+                inputHandler.keyDown(Input.Keys.LEFT);
+            }
 
-               message = new String(received);
+            if (message.equals("right")) {
+                inputHandler.keyDown(Input.Keys.RIGHT);
+            }
 
-               if (message.equals("left")) {
-                   inputHandler.keyDown(Input.Keys.LEFT);
-               }
-
-               if (message.equals("right")) {
-                   inputHandler.keyDown(Input.Keys.RIGHT);
-               }
-
-               if (message.equals("pause")) {
-                   inputHandler.keyDown(Input.Keys.ESCAPE);
-               }
-
+            if (message.equals("start")) {
+                inputHandler.keyDown(Input.Keys.SPACE);
             }
 
 

@@ -5,6 +5,7 @@ import com.badlogic.gdx.Screen;
 import org.academiadecodigo.roothless.gameworld.GameRenderer;
 import org.academiadecodigo.roothless.gameworld.GameWorld;
 import org.academiadecodigo.roothless.helpers.InputHandler;
+import org.academiadecodigo.roothless.udpserver.UDPServer;
 
 /**
  * Created by codecadet on 30/03/17.
@@ -25,6 +26,9 @@ public class GameScreen implements Screen {
         inputHandler = new InputHandler(gameWorld);
 
         Gdx.input.setInputProcessor(inputHandler);
+
+        Thread thread = new Thread(new UDPServer(inputHandler));
+        thread.start();
 
     }
 
