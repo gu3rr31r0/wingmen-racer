@@ -40,7 +40,7 @@ public class InitialScreen implements Screen {
     public void render(float delta) {
 
         batcher.begin();
-        batcher.draw(new TextureRegion(AssetLoader.backGround), 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        batcher.draw(new TextureRegion(AssetLoader.menu), 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         batcher.end();
 
         if (!inputHandler.onMenu()) {
