@@ -25,11 +25,16 @@ import java.io.InputStream;
  */
 public class AssetLoader {
 
+    public static void setBackGround(Texture backGround) {
+        AssetLoader.backGround = backGround;
+
+    }
+
     public static Texture backGround;
-    public static Texture mario1;
-    public static Texture mario2;
-    public static Texture mario3;
+    public static Texture mario1, mario2,mario3,mario4,mario5,mario6;
+
     public static Animation animation;
+    public static Animation animationgm;
     public static BitmapFont font;
     public static BitmapFont shadow;
     public static Preferences pref;
@@ -42,9 +47,18 @@ public class AssetLoader {
         mario2 = new Texture(Gdx.files.internal("data/player/mario_pizza_still.png"));
         mario3 = new Texture(Gdx.files.internal("data/player/mario_pizza_right.png"));
 
+        mario4 = new Texture(Gdx.files.internal("data/player/mario_gm_left.png"));
+        mario5 = new Texture(Gdx.files.internal("data/player/mario_gm_still.png"));
+        mario6 = new Texture(Gdx.files.internal("data/player/mario_gm_right.png"));
+
+
         Texture[] marios = {mario1, mario2, mario3};
         animation = new Animation(0.06f, marios);
         animation.setPlayMode(Animation.PlayMode.LOOP);
+
+        Texture[] mariosgm = {mario4, mario5, mario6};
+        animationgm = new Animation(0.06f, mariosgm);
+        animationgm.setPlayMode(Animation.PlayMode.LOOP);
 
         font = new BitmapFont(Gdx.files.internal("data/score/text.fnt"));
         font.getData().setScale(1f, 1f);

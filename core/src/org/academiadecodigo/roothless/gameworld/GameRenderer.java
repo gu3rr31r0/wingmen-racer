@@ -39,9 +39,10 @@ public class GameRenderer {
     private List<Powerup> powerups;
     private Player player;
     private Texture mario1, mario2, mario3;
-    private Animation animation;
+    private Animation animation,animationgm;
     private float speed;
     private boolean flyModeOn;
+    private int highScore = AssetLoader.getHighScore();
 
     public GameRenderer(GameWorld gameWorld) {
         this.gameWorld = gameWorld;
@@ -75,13 +76,10 @@ public class GameRenderer {
 
         //camController.update();
 
-        if (Score.getScore() == 20) {
+        if (Score.getScore()==highScore) {
             speed = Random.obstX(50.0f,5.0f);
             flyModeOn = true;
-        }
-
-        if (Score.getScore() == 30){
-            speed = 60;
+            godMode();
         }
 
         Gdx.gl.glViewport(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
@@ -148,7 +146,6 @@ public class GameRenderer {
 
         String score;
         String score2 ="";
-        int highScore=AssetLoader.getHighScore();
 
         if(flyModeOn){
             score = "GOD...";
@@ -180,7 +177,6 @@ public class GameRenderer {
                 //obstacle.getInstance().transform.translate(0,0,speed*Gdx.graphics.getDeltaTime());
                 powerup.move(speed * Gdx.graphics.getDeltaTime());
                 if (powerup.getPosZ() < 4 && powerup.getPosZ() > -2) {
-                    System.out.println("Checkeing fucking collihskdgdsjkfjkds");
                     powerup.checkCollision(player);
                 }
             }
@@ -231,12 +227,17 @@ public class GameRenderer {
     }
 
     public void godMode(){
-        back = AssetLoader.backGround;
-        mario1 = AssetLoader.mario1;
-        mario2 = AssetLoader.mario2;
-        mario3 = AssetLoader.mario3;
 
-        animation = AssetLoader.animation;
+        batcher.begin();
+        back = new Texture(Gdx.files.internal("data/backgrounds/back4.jpg"));
+        batcher.draw(back, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        batcher.end();
+
+
+        mario1 = AssetLoader.mario4;
+        mario2 = AssetLoader.mario5;
+        mario3 = AssetLoader.mario6;
+        animation= AssetLoader.animationgm;
     }
 
 }
