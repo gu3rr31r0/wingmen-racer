@@ -3,6 +3,7 @@ package org.academiadecodigo.roothless.helpers;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Preferences;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.VertexAttributes;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -39,6 +40,9 @@ public class AssetLoader {
     public static BitmapFont shadow;
     public static Preferences pref;
 
+    public static Sound sound;
+    public static Sound soundgm;
+
 
     public static void load() {
 
@@ -71,6 +75,9 @@ public class AssetLoader {
         if(!pref.contains("highScore")){
             pref.putInteger("highScore",0);
         }
+
+        sound = Gdx.audio.newSound(Gdx.files.internal("data/Mario.mp3"));
+        soundgm = Gdx.audio.newSound(Gdx.files.internal("data/mariog.wav"));
 
     }
 
