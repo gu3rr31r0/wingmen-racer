@@ -63,9 +63,12 @@ public class Random {
 
     public static String loadscreen() {
         String backpath = "data/backgrounds/";
-        Float r = obstX(1.0f, 4.0f);
+        Float r = obstX(1.0f, 5.0f);
         return backpath+"back"+r.intValue()+".jpg";
+    }
 
-
+    public static String getPowerUp() {
+        Float r = obstX(1.0f, 3.0f);
+        return ""+r.intValue()+".obj";
     }
 }

@@ -27,16 +27,10 @@ public class Powerup extends Scrollabe{
 
     public Powerup(int width, int height, int depth, float x, float y, float z, float speed) {
         super(1, 1, 1, x = Random.obstX(3, -3), 1, -42, speed);
-
         ModelLoader loader = new ObjLoader();
-        model = loader.loadModel(Gdx.files.internal("data/alien.obj"));
-        name = ""; // + Random
+        name = ""+Random.getPowerUp();
+        model = loader.loadModel(Gdx.files.internal("data/powerups/"+name));
         instance = new ModelInstance(model);
-        /*modelBuilder = new ModelBuilder();
-        material = new Material(ColorAttribute.createDiffuse(Color.GOLD));
-        model = modelBuilder.createBox(1,1,1, material,
-                VertexAttributes.Usage.Position | VertexAttributes.Usage.Normal);
-        instance = new ModelInstance(model);*/
         instance.transform.translate(x,1,-42);
     }
 
@@ -52,10 +46,19 @@ public class Powerup extends Scrollabe{
     }
 
     public void checkCollision(Player player) {
+        System.out.println("Player position: " + player.getPosition().x);
+        System.out.println("Monster position " + position.x);
+
         if (player.getPosition().x > position.x - 0.5 && player.getPosition().x  < position.x + 0.5) {
-            System.out.println("Bonus!");
-            if (name.equals("banana")) {
-                //Do Stuff
+            System.out.println("Check if collide with objects - Bonus!");
+            if (name.equals("1.obj")) {
+                System.out.println("collided with the asset 1");
+            }
+            if (name.equals("2.obj")) {
+                System.out.println("collided with the asset 2");
+            }
+            if (name.equals("3.obj")) {
+                System.out.println("collided with the asset 3");
             }
         }
     }

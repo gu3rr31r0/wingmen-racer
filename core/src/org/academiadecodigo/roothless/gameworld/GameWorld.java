@@ -1,6 +1,7 @@
 package org.academiadecodigo.roothless.gameworld;
 
 import org.academiadecodigo.roothless.gameobjects.Player;
+import org.academiadecodigo.roothless.gameobjects.Score;
 import org.academiadecodigo.roothless.gameobjects.ScrollHandler;
 
 /**
@@ -15,11 +16,8 @@ public class GameWorld {
 
     public GameWorld() {
 
-
         scroll = new ScrollHandler(0, this, 5);
-
         player = new Player();
-
     }
 
     public ScrollHandler getScroll() {
@@ -29,6 +27,7 @@ public class GameWorld {
     public void update(float delta) {
         scroll.update(delta);
         player.updateMotion();
+        Score.verifyStatus();
     }
 
     public Player getPlayer() {

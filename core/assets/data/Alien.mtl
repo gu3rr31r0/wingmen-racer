@@ -1,8 +1,0 @@
-newmtl alien_mat
-Ka 0.5647059 0.5647059 0.5647059
-Kd 0.5647059 0.5647059 0.5647059
-d 1
-Tr 1
-map_Ka alien_mat.png
-map_Kd alien_mat.png
-map_d alien_mat.png

@@ -23,8 +23,6 @@ public class GameScreen implements Screen {
 
         Gdx.input.setInputProcessor(new InputHandler(gameWorld));
 
-
-
     }
 
     @Override

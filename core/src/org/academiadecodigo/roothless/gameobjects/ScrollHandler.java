@@ -49,25 +49,31 @@ public class ScrollHandler {
 
         if (floor1.isScrolledDown()) {
             floor1.reset(floor7.getTailZ());
-
+            Score.scoreCounter(1);
 
         } else if (floor2.isScrolledDown()) {
             floor2.reset(floor1.getTailZ());
+            Score.scoreCounter(1);
 
         }else if (floor3.isScrolledDown()) {
             floor3.reset(floor2.getTailZ());
+            Score.scoreCounter(1);
 
         } else if (floor4.isScrolledDown()) {
             floor4.reset(floor3.getTailZ());
+            Score.scoreCounter(1);
 
         } else if (floor5.isScrolledDown()) {
             floor5.reset(floor4.getTailZ());
+            Score.scoreCounter(1);
 
         }  else if (floor6.isScrolledDown()) {
             floor6.reset(floor5.getTailZ());
+            Score.scoreCounter(1);
 
         } else if (floor7.isScrolledDown()) {
             floor7.reset(-42);
+            Score.scoreCounter(1);
         }
 
         floor1.update(delta);
