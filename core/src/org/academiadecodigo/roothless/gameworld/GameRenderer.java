@@ -10,7 +10,11 @@ import com.badlogic.gdx.graphics.g3d.*;
 import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute;
 import com.badlogic.gdx.graphics.g3d.environment.DirectionalLight;
 import com.badlogic.gdx.graphics.g3d.utils.CameraInputController;
+import org.academiadecodigo.roothless.gameobjects.Obstacle;
 import org.academiadecodigo.roothless.helpers.AssetLoader;
+
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Created by codecadet on 30/03/17.
@@ -25,10 +29,15 @@ public class GameRenderer {
     private ModelInstance floor1, floor2, floor3, floor4, floor5, floor6, floor7;
     private Texture back;
     private SpriteBatch batcher;
+    private boolean firstObj;
+    private int counter;
+    private List<Obstacle> obstacles;
 
     public GameRenderer(GameWorld gameWorld) {
 
         this.gameWorld = gameWorld;
+
+        obstacles = new LinkedList<Obstacle>();
 
         environment = new Environment();
         environment.set(new ColorAttribute(ColorAttribute.AmbientLight, 0.4f, 0.4f, 0.4f, 1f));
@@ -43,8 +52,10 @@ public class GameRenderer {
         cam.near = 1f;
         cam.far = 300f;
         cam.update();
+        firstObj = false;
 
         initAssets();
+
 
         //camController = new CameraInputController(cam);
         //Gdx.input.setInputProcessor(camController);
@@ -79,7 +90,20 @@ public class GameRenderer {
         floor6.transform.translate(0,0, 5*Gdx.graphics.getDeltaTime());
         floor7.transform.translate(0,0, 5*Gdx.graphics.getDeltaTime());
 
-        System.out.println(Gdx.graphics.getDeltaTime());
+        if (runTime - counter > 0) {
+            counter++;
+            obstacles.add(new Obstacle(0,0,0 ,0,0,0, 5));
+            firstObj = true;
+            gameWorld.getScroll().firstObj = true;
+        }
+
+        if (gameWorld.getScroll().isFirstObj()) {
+
+            for (Obstacle obstacle: obstacles) {
+                modelBatch.render(obstacle.getInstance(), environment);
+                obstacle.getInstance().transform.translate(0,0,5*Gdx.graphics.getDeltaTime());
+            }
+        }
 
         modelBatch.end();
 

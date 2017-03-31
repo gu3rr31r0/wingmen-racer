@@ -43,4 +43,11 @@ public class Random {
 
     }
 
+    public static float obstX(float max, float min) {
+
+        float r = (float) (Math.random() * (max - min)) + min;
+
+        return r;
+    }
+
 }

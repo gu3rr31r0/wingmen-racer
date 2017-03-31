@@ -6,7 +6,7 @@ import com.badlogic.gdx.math.Vector3;
  * Created by codecadet on 30/03/17.
  */
 public class Scrollabe {
-    private Vector3 position;
+    protected Vector3 position;
     private Vector3 velocity;
     private int width;
     private int height;

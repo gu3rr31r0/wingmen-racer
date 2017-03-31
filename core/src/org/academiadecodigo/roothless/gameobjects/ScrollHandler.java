@@ -9,6 +9,8 @@ public class ScrollHandler {
 
     private GameWorld gameWorld;
     private Floor floor1, floor2, floor3, floor4, floor5, floor6, floor7;
+    private Obstacle obstacle;
+    public boolean firstObj;
 
     public Floor getFloor1() {
         return floor1;
@@ -37,12 +39,15 @@ public class ScrollHandler {
         floor6 = new Floor(7,1,7, 0,0, floor5.getTailZ(), speed);
         floor7 = new Floor(7,1,7, 0,0, floor6.getTailZ(), speed);
 
+        firstObj = false;
+
     }
 
     public void update(float delta) {
 
         if (floor1.isScrolledDown()) {
             floor1.reset(floor7.getTailZ());
+
 
         } else if (floor2.isScrolledDown()) {
             floor2.reset(floor1.getTailZ());
@@ -83,5 +88,13 @@ public class ScrollHandler {
 
     public Floor getFloor7() {
         return floor7;
+    }
+
+    public Obstacle getObstacle() {
+        return obstacle;
+    }
+
+    public boolean isFirstObj() {
+        return firstObj;
     }
 }
