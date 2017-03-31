@@ -11,6 +11,7 @@ public class GameWorld {
     private ScrollHandler scroll;
     private Player player;
     private float delta;
+    private GameState currentState;
 
 
     public GameWorld() {
@@ -19,6 +20,8 @@ public class GameWorld {
         scroll = new ScrollHandler(0, this, 5);
 
         player = new Player();
+
+
 
     }
 
