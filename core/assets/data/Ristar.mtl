@@ -1,0 +1,22 @@
+#
+## Alias OBJ Material File
+# Exported from SketchUp, (c) 2000-2012 Trimble Navigation Limited
+
+newmtl Palette
+Ka 0.000000 0.000000 0.000000
+Kd 0.513725 0.443137 0.329412
+Ks 0.330000 0.330000 0.330000
+map_Kd Ristar/Palette.png
+
+newmtl Face
+Ka 0.000000 0.000000 0.000000
+Kd 0.831373 0.650980 0.145098
+Ks 0.330000 0.330000 0.330000
+map_Kd Ristar/Face.png
+
+newmtl Shoe
+Ka 0.000000 0.000000 0.000000
+Kd 0.945098 0.898039 0.713725
+Ks 0.330000 0.330000 0.330000
+map_Kd Ristar/Shoe.png
+

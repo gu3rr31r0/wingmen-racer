@@ -22,6 +22,7 @@ public class Powerup extends Scrollabe{
     private ModelInstance instance;
     private Material material;
     private float x;
+    private String name;
 
 
     public Powerup(int width, int height, int depth, float x, float y, float z, float speed) {
@@ -29,6 +30,7 @@ public class Powerup extends Scrollabe{
 
         ModelLoader loader = new ObjLoader();
         model = loader.loadModel(Gdx.files.internal("data/alien.obj"));
+        name = ""; // + Random
         instance = new ModelInstance(model);
         /*modelBuilder = new ModelBuilder();
         material = new Material(ColorAttribute.createDiffuse(Color.GOLD));
@@ -52,6 +54,9 @@ public class Powerup extends Scrollabe{
     public void checkCollision(Player player) {
         if (player.getPosition().x > position.x - 0.5 && player.getPosition().x  < position.x + 0.5) {
             System.out.println("Bonus!");
+            if (name.equals("banana")) {
+                //Do Stuff
+            }
         }
     }
 }
