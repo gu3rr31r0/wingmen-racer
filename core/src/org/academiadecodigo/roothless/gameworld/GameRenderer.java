@@ -11,10 +11,8 @@ import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute;
 import com.badlogic.gdx.graphics.g3d.environment.DirectionalLight;
 import com.badlogic.gdx.graphics.g3d.utils.CameraInputController;
 import org.academiadecodigo.roothless.gameobjects.Obstacle;
+import org.academiadecodigo.roothless.gameobjects.Player;
 import org.academiadecodigo.roothless.helpers.AssetLoader;
-
-import java.util.LinkedList;
-import java.util.List;
 
 /**
  * Created by codecadet on 30/03/17.
@@ -26,12 +24,13 @@ public class GameRenderer {
     private Environment environment;
     // private CameraInputController camController;
     private ModelBatch modelBatch;
-    private ModelInstance floor1, floor2, floor3, floor4, floor5, floor6, floor7;
+    private ModelInstance floor1, floor2, floor3, floor4, floor5, floor6, floor7, playerInstance;
     private Texture back;
     private SpriteBatch batcher;
     private boolean firstObj;
     private int counter;
     private List<Obstacle> obstacles;
+    private Player player;
 
     public GameRenderer(GameWorld gameWorld) {
 
@@ -45,6 +44,8 @@ public class GameRenderer {
 
         modelBatch = new ModelBatch();
         batcher = new SpriteBatch();
+
+
 
         cam = new PerspectiveCamera(67, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         cam.position.set(0, 4, 7);
@@ -81,6 +82,7 @@ public class GameRenderer {
         modelBatch.render(floor5, environment);
         modelBatch.render(floor6, environment);
         modelBatch.render(floor7, environment);
+        modelBatch.render(playerInstance, environment);
 
         floor1.transform.translate(0,0, 5*Gdx.graphics.getDeltaTime());
         floor2.transform.translate(0,0, 5*Gdx.graphics.getDeltaTime());
@@ -105,6 +107,9 @@ public class GameRenderer {
             }
         }
 
+        player = gameWorld.getPlayer();
+        playerInstance.transform.translate(player.getPosition().x, player.getPosition().y, player.getPosition().z);
+
         modelBatch.end();
 
 
@@ -119,6 +124,9 @@ public class GameRenderer {
         floor5 = gameWorld.getScroll().getFloor5().getModelInstance();
         floor6 = gameWorld.getScroll().getFloor6().getModelInstance();
         floor7 = gameWorld.getScroll().getFloor7().getModelInstance();
+
+        playerInstance = gameWorld.getPlayer().getPlayerInstance();
+
         back = AssetLoader.backGround;
 
         floor1.transform.translate(0,0,0);

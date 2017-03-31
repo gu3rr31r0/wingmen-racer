@@ -11,12 +11,14 @@ public class GameWorld {
     private ScrollHandler scroll;
     private Player player;
     private float delta;
-    private int playerPosZ;
 
-    public GameWorld(int playerPosZ) {
-        this.playerPosZ = playerPosZ;
+
+    public GameWorld() {
+
 
         scroll = new ScrollHandler(0, this, 5);
+
+        player = new Player();
 
     }
 
@@ -26,5 +28,10 @@ public class GameWorld {
 
     public void update(float delta) {
         scroll.update(delta);
+        player.updateMotion();
+    }
+
+    public Player getPlayer() {
+        return player;
     }
 }
