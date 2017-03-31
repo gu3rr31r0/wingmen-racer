@@ -1,11 +1,14 @@
 package org.academiadecodigo.roothless.gameobjects;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.assets.loaders.ModelLoader;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.VertexAttributes;
 import com.badlogic.gdx.graphics.g3d.Material;
 import com.badlogic.gdx.graphics.g3d.Model;
 import com.badlogic.gdx.graphics.g3d.ModelInstance;
 import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute;
+import com.badlogic.gdx.graphics.g3d.loader.ObjLoader;
 import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
 import org.academiadecodigo.roothless.util.Random;
 
@@ -23,11 +26,15 @@ public class Powerup extends Scrollabe{
 
     public Powerup(int width, int height, int depth, float x, float y, float z, float speed) {
         super(1, 1, 1, x = Random.obstX(3, -3), 1, -42, speed);
-        modelBuilder = new ModelBuilder();
+
+        ModelLoader loader = new ObjLoader();
+        model = loader.loadModel(Gdx.files.internal("data/alien.obj"));
+        instance = new ModelInstance(model);
+        /*modelBuilder = new ModelBuilder();
         material = new Material(ColorAttribute.createDiffuse(Color.GOLD));
         model = modelBuilder.createBox(1,1,1, material,
                 VertexAttributes.Usage.Position | VertexAttributes.Usage.Normal);
-        instance = new ModelInstance(model);
+        instance = new ModelInstance(model);*/
         instance.transform.translate(x,1,-42);
     }
 
@@ -40,5 +47,11 @@ public class Powerup extends Scrollabe{
         instance.transform.translate(0,0,distance);
         position.z = position.z-distance;
 
+    }
+
+    public void checkCollision(Player player) {
+        if (player.getPosition().x > position.x - 0.5 && player.getPosition().x  < position.x + 0.5) {
+            System.out.println("Bonus!");
+        }
     }
 }

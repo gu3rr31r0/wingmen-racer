@@ -46,7 +46,6 @@ public class Obstacle extends Scrollabe{
     }
 
     public void checkCollision(Player player) {
-        System.out.println("here!");
         if (player.getPosition().x > position.x - 0.5 && player.getPosition().x  < position.x + 0.5) {
             System.exit(1);
         }
