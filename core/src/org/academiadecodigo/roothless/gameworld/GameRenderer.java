@@ -13,6 +13,7 @@ import com.badlogic.gdx.graphics.g3d.environment.DirectionalLight;
 
 import org.academiadecodigo.roothless.gameobjects.Obstacle;
 import org.academiadecodigo.roothless.gameobjects.Player;
+import org.academiadecodigo.roothless.gameobjects.Powerup;
 import org.academiadecodigo.roothless.helpers.AssetLoader;
 
 import java.util.LinkedList;
@@ -34,6 +35,7 @@ public class GameRenderer {
     private boolean firstObj;
     private int counter;
     private List<Obstacle> obstacles;
+    private List<Powerup> powerups;
     private Player player;
     private Texture mario1, mario2, mario3;
     private Animation animation;
@@ -45,6 +47,7 @@ public class GameRenderer {
         this.gameWorld = gameWorld;
 
         obstacles = new LinkedList<Obstacle>();
+        powerups = new LinkedList<Powerup>();
 
         environment = new Environment();
         environment.set(new ColorAttribute(ColorAttribute.AmbientLight, 0.4f, 0.4f, 0.4f, 1f));
@@ -92,7 +95,19 @@ public class GameRenderer {
                 obstacle.move(SPEED*Gdx.graphics.getDeltaTime());
                 if (obstacle.getPosZ() < 4 && obstacle.getPosZ() > 3) {
                     obstacle.checkCollision(player);
-                    System.out.println(player.getPosition().z);
+
+                }
+            }
+        }
+
+        if (gameWorld.getScroll().isFirstBonus()) {
+
+            for (Powerup powerup: powerups) {
+                modelBatch.render(powerup.getInstance(), environment);
+                //obstacle.getInstance().transform.translate(0,0,SPEED*Gdx.graphics.getDeltaTime());
+                powerup.move(SPEED*Gdx.graphics.getDeltaTime());
+                if (powerup.getPosZ() < 4 && powerup.getPosZ() > 3) {
+                    powerup.checkCollision(player);
                 }
             }
         }
@@ -114,10 +129,20 @@ public class GameRenderer {
         floor7.transform.translate(0,0, SPEED*Gdx.graphics.getDeltaTime());
 
         if (runTime - counter > 0) {
+            int random = (int) (Math.random() * 10);
             counter++;
-            obstacles.add(new Obstacle(0,0,0 ,0,0,0, SPEED));
+
+            if (random == 3) {
+                System.out.println("Making One!");
+                powerups.add(new Powerup(0,0,0 ,0,0,0, SPEED));
+                gameWorld.getScroll().firstBonus = true;
+            }
+            else {
+                obstacles.add(new Obstacle(0, 0, 0, 0, 0, 0, SPEED));
+                gameWorld.getScroll().firstObj = true;
+            }
+
             firstObj = true;
-            gameWorld.getScroll().firstObj = true;
         }
 
 

@@ -11,6 +11,7 @@ public class ScrollHandler {
     private Floor floor1, floor2, floor3, floor4, floor5, floor6, floor7;
     private Obstacle obstacle;
     public boolean firstObj;
+    public boolean firstBonus;
 
     public Floor getFloor1() {
         return floor1;
@@ -40,6 +41,7 @@ public class ScrollHandler {
         floor7 = new Floor(7,1,7, 0,0, floor6.getTailZ(), speed);
 
         firstObj = false;
+        firstBonus = false;
 
     }
 
@@ -96,5 +98,9 @@ public class ScrollHandler {
 
     public boolean isFirstObj() {
         return firstObj;
+    }
+
+    public boolean isFirstBonus() {
+        return firstBonus;
     }
 }
