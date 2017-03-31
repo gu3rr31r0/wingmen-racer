@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.PerspectiveCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g3d.*;
@@ -34,6 +35,8 @@ public class GameRenderer {
     private int counter;
     private List<Obstacle> obstacles;
     private Player player;
+    private Texture mario1, mario2, mario3;
+    private Animation animation;
 
     private final float SPEED = 5;
 
@@ -119,11 +122,12 @@ public class GameRenderer {
 
 
         player = gameWorld.getPlayer();
-       // playerInstance.transform.translate(player.getPosition().x, player.getPosition().y, player.getPosition().z);
 
         modelBatch.end();
 
-
+        batcher.begin();
+        batcher.draw((Texture) animation.getKeyFrame(runTime), player.getPosition().x*1000, 0, Gdx.graphics.getWidth()/2.0f, Gdx.graphics.getHeight()/2.0f);
+        batcher.end();
 
 
     }
@@ -149,6 +153,11 @@ public class GameRenderer {
         floor6.transform.translate(0,0,-35);
         floor7.transform.translate(0,0,-42);
 
+        mario1 = AssetLoader.mario1;
+        mario2 = AssetLoader.mario2;
+        mario3 = AssetLoader.mario3;
+
+        animation = AssetLoader.animation;
 
     }
 }
