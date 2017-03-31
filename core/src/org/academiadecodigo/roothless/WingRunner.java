@@ -18,9 +18,12 @@ public class WingRunner extends Game {
 	@Override
 	public void create () {
 		AssetLoader.load();
-		setScreen(new GameScreen());
-		//setScreen(new InitialScreen());
+		setScreen(new InitialScreen(this));
 
+	}
+
+	public void loadGame() {
+		setScreen(new GameScreen());
 	}
 
 

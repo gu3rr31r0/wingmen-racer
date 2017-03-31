@@ -14,6 +14,7 @@ public class InputHandler implements InputProcessor {
     private Player player;
     private GameWorld gameWorld;
 
+
     public InputHandler(GameWorld gameWorld) {
         this.gameWorld = gameWorld;
         player = gameWorld.getPlayer();
@@ -48,7 +49,7 @@ public class InputHandler implements InputProcessor {
                 player.setRightMove(false);
                 break;
             case Input.Keys.ESCAPE:
-                gameWorld.pause();
+               // gameWorld.pause();
         }
         return true;
     }
@@ -82,4 +83,5 @@ public class InputHandler implements InputProcessor {
     public boolean scrolled(int amount) {
         return false;
     }
+
 }

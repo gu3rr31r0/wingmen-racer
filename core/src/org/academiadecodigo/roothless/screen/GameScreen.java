@@ -13,6 +13,7 @@ public class GameScreen implements Screen {
 
     private GameWorld gameWorld;
     private GameRenderer gameRenderer;
+    private InputHandler inputHandler;
     private float runTime;
 
 
@@ -21,7 +22,9 @@ public class GameScreen implements Screen {
         gameWorld = new GameWorld();
         gameRenderer = new GameRenderer(gameWorld);
 
-        Gdx.input.setInputProcessor(new InputHandler(gameWorld));
+        inputHandler = new InputHandler(gameWorld);
+
+        Gdx.input.setInputProcessor(inputHandler);
 
     }
 

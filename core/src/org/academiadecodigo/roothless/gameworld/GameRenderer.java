@@ -240,4 +240,14 @@ public class GameRenderer {
         animation= AssetLoader.animationgm;
     }
 
+    public void makeMenu() {
+
+        batcher.begin();
+
+        batcher.draw(new TextureRegion(back), 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+
+        batcher.end();
+
+    }
+
 }
