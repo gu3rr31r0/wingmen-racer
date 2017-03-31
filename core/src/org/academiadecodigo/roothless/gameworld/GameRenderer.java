@@ -9,10 +9,13 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g3d.*;
 import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute;
 import com.badlogic.gdx.graphics.g3d.environment.DirectionalLight;
-import com.badlogic.gdx.graphics.g3d.utils.CameraInputController;
+
 import org.academiadecodigo.roothless.gameobjects.Obstacle;
 import org.academiadecodigo.roothless.gameobjects.Player;
 import org.academiadecodigo.roothless.helpers.AssetLoader;
+
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Created by codecadet on 30/03/17.
@@ -31,6 +34,8 @@ public class GameRenderer {
     private int counter;
     private List<Obstacle> obstacles;
     private Player player;
+
+    private final float SPEED = 5;
 
     public GameRenderer(GameWorld gameWorld) {
 
@@ -67,6 +72,7 @@ public class GameRenderer {
 
         //camController.update();
 
+
         Gdx.gl.glViewport(0,0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
 
@@ -84,17 +90,17 @@ public class GameRenderer {
         modelBatch.render(floor7, environment);
         modelBatch.render(playerInstance, environment);
 
-        floor1.transform.translate(0,0, 5*Gdx.graphics.getDeltaTime());
-        floor2.transform.translate(0,0, 5*Gdx.graphics.getDeltaTime());
-        floor3.transform.translate(0,0, 5*Gdx.graphics.getDeltaTime());
-        floor4.transform.translate(0,0, 5*Gdx.graphics.getDeltaTime());
-        floor5.transform.translate(0,0, 5*Gdx.graphics.getDeltaTime());
-        floor6.transform.translate(0,0, 5*Gdx.graphics.getDeltaTime());
-        floor7.transform.translate(0,0, 5*Gdx.graphics.getDeltaTime());
+        floor1.transform.translate(0,0, SPEED*Gdx.graphics.getDeltaTime());
+        floor2.transform.translate(0,0, SPEED*Gdx.graphics.getDeltaTime());
+        floor3.transform.translate(0,0, SPEED*Gdx.graphics.getDeltaTime());
+        floor4.transform.translate(0,0, SPEED*Gdx.graphics.getDeltaTime());
+        floor5.transform.translate(0,0, SPEED*Gdx.graphics.getDeltaTime());
+        floor6.transform.translate(0,0, SPEED*Gdx.graphics.getDeltaTime());
+        floor7.transform.translate(0,0, SPEED*Gdx.graphics.getDeltaTime());
 
         if (runTime - counter > 0) {
             counter++;
-            obstacles.add(new Obstacle(0,0,0 ,0,0,0, 5));
+            obstacles.add(new Obstacle(0,0,0 ,0,0,0, SPEED));
             firstObj = true;
             gameWorld.getScroll().firstObj = true;
         }
@@ -103,14 +109,16 @@ public class GameRenderer {
 
             for (Obstacle obstacle: obstacles) {
                 modelBatch.render(obstacle.getInstance(), environment);
-                obstacle.getInstance().transform.translate(0,0,5*Gdx.graphics.getDeltaTime());
+                obstacle.getInstance().transform.translate(0,0,SPEED*Gdx.graphics.getDeltaTime());
             }
         }
 
         player = gameWorld.getPlayer();
-        playerInstance.transform.translate(player.getPosition().x, player.getPosition().y, player.getPosition().z);
+       // playerInstance.transform.translate(player.getPosition().x, player.getPosition().y, player.getPosition().z);
 
         modelBatch.end();
+
+        System.out.println(player.getPosition().x);
 
 
 

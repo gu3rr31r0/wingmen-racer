@@ -45,7 +45,7 @@ public class Player {
 
     public void updateMotion() {
 
-        if (leftMove) {
+/*        if (leftMove) {
             if (position.x < -3.5) {
                 return;
             }
@@ -55,6 +55,28 @@ public class Player {
         }
         if (rightMove) {
             position.x += 0.5 * Gdx.graphics.getDeltaTime();
+
+        }*/
+
+        if (leftMove) {
+
+            if (position.x > -2.5) {
+                playerInstance.transform.translate(-0.05f, 0, 0);
+                position.x = position.x - 0.05f;
+            }
+
+
+
+            //if (!Intersector.overlaps())
+
+
+        }
+        if (rightMove) {
+            if (position.x < 2.5) {
+                playerInstance.transform.translate(0.05f, 0, 0);
+                position.x = position.x + 0.05f;
+            }
+
 
         }
     }
