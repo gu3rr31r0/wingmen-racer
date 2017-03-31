@@ -81,6 +81,18 @@ public class GameRenderer {
         batcher.end();
 
         modelBatch.begin(cam);
+        if (gameWorld.getScroll().isFirstObj()) {
+
+            for (Obstacle obstacle: obstacles) {
+                modelBatch.render(obstacle.getInstance(), environment);
+                //obstacle.getInstance().transform.translate(0,0,SPEED*Gdx.graphics.getDeltaTime());
+                obstacle.move(SPEED*Gdx.graphics.getDeltaTime());
+                if (obstacle.getPosZ() < 4 && obstacle.getPosZ() > 3) {
+                    obstacle.checkCollision(player);
+                    System.out.println(player.getPosition().z);
+                }
+            }
+        }
         modelBatch.render(floor1, environment);
         modelBatch.render(floor2, environment);
         modelBatch.render(floor3, environment);
@@ -105,20 +117,12 @@ public class GameRenderer {
             gameWorld.getScroll().firstObj = true;
         }
 
-        if (gameWorld.getScroll().isFirstObj()) {
-
-            for (Obstacle obstacle: obstacles) {
-                modelBatch.render(obstacle.getInstance(), environment);
-                obstacle.getInstance().transform.translate(0,0,SPEED*Gdx.graphics.getDeltaTime());
-            }
-        }
 
         player = gameWorld.getPlayer();
        // playerInstance.transform.translate(player.getPosition().x, player.getPosition().y, player.getPosition().z);
 
         modelBatch.end();
 
-        System.out.println(player.getPosition().x);
 
 
 

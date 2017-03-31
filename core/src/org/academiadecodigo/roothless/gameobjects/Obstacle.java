@@ -41,8 +41,14 @@ public class Obstacle extends Scrollabe{
 
     public void move(float distance) {
         instance.transform.translate(0,0,distance);
-        position.z = position.z-distance;
+        position.z = position.z+distance;
 
     }
 
+    public void checkCollision(Player player) {
+        System.out.println("here!");
+        if (player.getPosition().x > position.x - 0.5 && player.getPosition().x  < position.x + 0.5) {
+            System.exit(1);
+        }
+    }
 }
