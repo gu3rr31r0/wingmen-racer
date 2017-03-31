@@ -31,7 +31,7 @@ public class AssetLoader {
 
     }
 
-    public static Texture backGround;
+    public static Texture backGround, menu ;
     public static Texture mario1, mario2,mario3,mario4,mario5,mario6;
 
     public static Animation animation;
@@ -54,6 +54,8 @@ public class AssetLoader {
         mario4 = new Texture(Gdx.files.internal("data/player/mario_gm_left.png"));
         mario5 = new Texture(Gdx.files.internal("data/player/mario_gm_still.png"));
         mario6 = new Texture(Gdx.files.internal("data/player/mario_gm_right.png"));
+
+        menu = new Texture(Gdx.files.internal("data/backgrounds/InitScreen.png"));
 
 
         Texture[] marios = {mario1, mario2, mario3};
