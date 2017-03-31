@@ -75,7 +75,7 @@ public class GameRenderer {
 
         //camController.update();
 
-        if (Score.getScore() == 3) {
+        if (Score.getScore() == 20) {
             speed = Random.obstX(50.0f,5.0f);
             flyModeOn = true;
         }
@@ -148,6 +148,7 @@ public class GameRenderer {
 
         String score;
         String score2 ="";
+        int highScore=AssetLoader.getHighScore();
 
         if(flyModeOn){
             score = "GOD...";
@@ -159,8 +160,12 @@ public class GameRenderer {
 
         AssetLoader.shadow.draw(batcher, "" + score, (Gdx.graphics.getWidth() / 2) - (3 * score.length()) + 200, Gdx.graphics.getHeight() - 50);
         AssetLoader.font.draw(batcher, "" + score, (Gdx.graphics.getWidth() / 2) - (3 * score.length() - 1) + 200, Gdx.graphics.getHeight() - 50);
+
         AssetLoader.shadow.draw(batcher, "" + score2, (Gdx.graphics.getWidth() / 2) - (3 * score.length()) + 200, Gdx.graphics.getHeight() - 120);
         AssetLoader.font.draw(batcher, "" + score2, (Gdx.graphics.getWidth() / 2) - (3 * score.length() - 1) + 200, Gdx.graphics.getHeight() - 120);
+
+        AssetLoader.shadow.draw(batcher, "Hs: " + highScore, (Gdx.graphics.getWidth() / 2) - (3 * score.length()) -300, Gdx.graphics.getHeight() - 50);
+        AssetLoader.font.draw(batcher, "Hs: " + highScore, (Gdx.graphics.getWidth() / 2) - (3 * score.length() - 1) - 300, Gdx.graphics.getHeight() - 50);
 
         batcher.end();
 
