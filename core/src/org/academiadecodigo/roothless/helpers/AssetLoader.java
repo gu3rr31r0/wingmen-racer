@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute;
 import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
 import org.academiadecodigo.roothless.gameobjects.Floor;
 import org.academiadecodigo.roothless.gameobjects.Player;
+import org.academiadecodigo.roothless.util.Random;
 
 /**
  * Created by codecadet on 30/03/17.
@@ -26,10 +27,10 @@ public class AssetLoader {
 
     public static void load() {
 
-        backGround = new Texture(Gdx.files.internal("data/giphy.gif"));
-        mario1 = new Texture(Gdx.files.internal("data/left_leg_mario.png"));
-        mario2 = new Texture(Gdx.files.internal("data/still_mario.png"));
-        mario3 = new Texture(Gdx.files.internal("data/right_leg_mario.png"));
+        backGround = new Texture(Gdx.files.internal(Random.loadscreen()));
+        mario1 = new Texture(Gdx.files.internal("data/player/mario_pizza_left.png"));
+        mario2 = new Texture(Gdx.files.internal("data/player/mario_pizza_still.png"));
+        mario3 = new Texture(Gdx.files.internal("data/player/mario_pizza_right.png"));
 
         Texture[] marios = {mario1, mario2, mario3};
         animation = new Animation(0.06f, marios);

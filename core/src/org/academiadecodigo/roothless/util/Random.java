@@ -58,8 +58,14 @@ public class Random {
     public static float obstX(float max, float min) {
 
         float r = (float) (Math.random() * (max - min)) + min;
-
         return r;
     }
 
+    public static String loadscreen() {
+        String backpath = "data/backgrounds/";
+        Float r = obstX(1.0f, 4.0f);
+        return backpath+"back"+r.intValue()+".jpg";
+
+
+    }
 }
