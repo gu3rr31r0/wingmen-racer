@@ -1,7 +1,7 @@
 # Created by MKDS Course Modifier
-mtllib Alien.mtl
-g Obj_Alien
-usemtl alien_mat
+mtllib 1.mtl
+g Obj_1
+usemtl 1_mat
 v 0.166748 0.6000977 -0.1862793
 v 0.1906738 0.5483398 -0.21875
 v 0 0.621582 -0.2373047

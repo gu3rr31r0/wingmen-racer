@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g3d.Model;
 import com.badlogic.gdx.graphics.g3d.ModelInstance;
 import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute;
 import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
+import org.academiadecodigo.roothless.helpers.AssetLoader;
 import org.academiadecodigo.roothless.util.Random;
 
 /**
@@ -47,6 +48,7 @@ public class Obstacle extends Scrollabe{
 
     public void checkCollision(Player player) {
         if (player.getPosition().x > position.x - 0.5 && player.getPosition().x  < position.x + 0.5) {
+            AssetLoader.setHighScore(Score.getScore());
             System.exit(1);
         }
     }

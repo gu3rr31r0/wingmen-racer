@@ -19,6 +19,10 @@ public class InputHandler implements InputProcessor {
         player = gameWorld.getPlayer();
     }
 
+    public  InputHandler(){
+
+    }
+
     @Override
     public boolean keyDown(int keycode) {
 
