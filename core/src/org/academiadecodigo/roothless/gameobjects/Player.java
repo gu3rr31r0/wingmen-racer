@@ -32,10 +32,10 @@ public class Player {
     public Player() {
         position=new Vector3(0, 0, 0);
         modelBuilder = new ModelBuilder();
-        material = new Material(ColorAttribute.createDiffuse(Color.CORAL));
-        model = modelBuilder.createBox(1, 2, 1, material, VertexAttributes.Usage.Position | VertexAttributes.Usage.Normal);
+        material = new Material(ColorAttribute.createDiffuse(Color.WHITE));
+        model = modelBuilder.createBox(1, 0.3f, 1, material, VertexAttributes.Usage.Position | VertexAttributes.Usage.Normal);
         playerInstance = new ModelInstance(model);
-        playerInstance.transform.translate(0,2,4);
+        playerInstance.transform.translate(0,2.5f,4);
     }
 
     public ModelInstance getPlayerInstance() {

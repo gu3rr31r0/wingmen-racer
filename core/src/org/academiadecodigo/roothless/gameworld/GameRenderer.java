@@ -126,7 +126,9 @@ public class GameRenderer {
         modelBatch.end();
 
         batcher.begin();
-        batcher.draw((Texture) animation.getKeyFrame(runTime), player.getPosition().x*1000, 0, Gdx.graphics.getWidth()/2.0f, Gdx.graphics.getHeight()/2.0f);
+
+        batcher.draw((Texture) animation.getKeyFrame(runTime), player.getPosition().x/(Gdx.graphics.getDeltaTime()/3)+200, 200, Gdx.graphics.getWidth()/2.0f, Gdx.graphics.getHeight()/2.0f);
+
         batcher.end();
 
 

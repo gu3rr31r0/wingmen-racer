@@ -10,33 +10,45 @@ public class Random {
 
     public static Color getRandomColor(){
 
-        int colorNumber = (int)(Math.random()*7);
+        int colorNumber = (int)(Math.random()*17);
 
         switch(colorNumber){
 
             case 0:
-                System.out.println("Blue");
                 return Color.BLUE;
             case 1:
-                System.out.println("Coral");
                 return Color.CORAL;
             case 2:
-                System.out.println("Brown");
                 return Color.BROWN;
             case 3:
-                System.out.println("Cor de merda");
                 return Color.CHARTREUSE;
             case 4:
-                System.out.println("Cyean");
                 return Color.CYAN;
             case 5:
-                System.out.println("Tijoçlo");
                 return Color.FIREBRICK;
             case 6:
-                System.out.println("Gaja");
                 return Color.GOLD;
+            case 7:
+                return Color.GOLDENROD;
+            case 8:
+                return Color.BLACK;
+            case 9:
+                return Color.FOREST;
+            case 10:
+                return Color.LIGHT_GRAY;
+            case 11:
+                return Color.DARK_GRAY;
+            case 12:
+                return Color.MAGENTA;
+            case 13:
+                return Color.MAROON;
+            case 14:
+                return Color.OLIVE;
+            case 15:
+                return Color.SALMON;
+            case 16:
+                return Color.TEAL;
             default:
-                System.out.println("Bcaipinha");
                 return Color.LIME;
 
         }

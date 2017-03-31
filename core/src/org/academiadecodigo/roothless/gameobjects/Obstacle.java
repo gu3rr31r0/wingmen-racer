@@ -24,11 +24,11 @@ public class Obstacle extends Scrollabe{
     public Obstacle(int width, int height, int depth, float x, float y, float z, float speed) {
         super(1, 1, 1, x = Random.obstX(3, -3), 1, -42, speed);
         modelBuilder = new ModelBuilder();
-        material = new Material(ColorAttribute.createDiffuse(Color.BLACK));
-        model = modelBuilder.createBox(1,1,1, material,
+        material = new Material(ColorAttribute.createDiffuse(Random.getRandomColor()));
+        model = modelBuilder.createBox(1,4,1, material,
                 VertexAttributes.Usage.Position | VertexAttributes.Usage.Normal);
         instance = new ModelInstance(model);
-        instance.transform.translate(x,1,-42);
+        instance.transform.translate(x,2,-42);
 
 
     }

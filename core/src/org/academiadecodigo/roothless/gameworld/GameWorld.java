@@ -34,4 +34,8 @@ public class GameWorld {
     public Player getPlayer() {
         return player;
     }
+
+    public void pause() {
+
+    }
 }

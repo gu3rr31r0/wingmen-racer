@@ -33,7 +33,7 @@ public class AssetLoader {
 
         Texture[] marios = {mario1, mario2, mario3};
         animation = new Animation(0.06f, marios);
-        animation.setPlayMode(Animation.PlayMode.LOOP_PINGPONG);
+        animation.setPlayMode(Animation.PlayMode.LOOP);
 
     }
 
