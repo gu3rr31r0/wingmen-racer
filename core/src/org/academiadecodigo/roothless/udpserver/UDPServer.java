@@ -44,15 +44,15 @@ public class UDPServer implements Runnable {
 
             System.out.println(message);
 
-            if (message.equals("left")) {
+            if (message.startsWith("left")) {
                 inputHandler.keyDown(Input.Keys.LEFT);
             }
 
-            if (message.equals("right")) {
+            if (message.startsWith("right")) {
                 inputHandler.keyDown(Input.Keys.RIGHT);
             }
 
-            if (message.equals("start")) {
+            if (message.startsWith("start")) {
                 inputHandler.keyDown(Input.Keys.SPACE);
             }
 
@@ -63,7 +63,7 @@ public class UDPServer implements Runnable {
             e.printStackTrace();
         } finally {
             if (socket != null) {
-                socket.close();
+                //socket.close();
             }
         }
     }
