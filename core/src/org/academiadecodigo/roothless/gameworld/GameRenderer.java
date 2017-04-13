@@ -223,21 +223,26 @@ public class GameRenderer {
         mario3 = AssetLoader.mario3;
 
         animation = AssetLoader.animation;
+        AssetLoader.sound.play();
 
     }
 
     public void godMode(){
+
+
 
         batcher.begin();
         back = new Texture(Gdx.files.internal("data/backgrounds/back4.jpg"));
         batcher.draw(back, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         batcher.end();
 
-
         mario1 = AssetLoader.mario4;
         mario2 = AssetLoader.mario5;
         mario3 = AssetLoader.mario6;
         animation= AssetLoader.animationgm;
+
+        AssetLoader.sound.stop();
+        AssetLoader.soundgm.play();
     }
 
     public void makeMenu() {
